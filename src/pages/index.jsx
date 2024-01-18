@@ -2,7 +2,7 @@ import RootLayout from "@/components/RootLayout";
 import Image from "next/image";
 
 export default function Home() {
-  return (
+  return (  
     <>
       <section id="hero" className='container mx-auto mb-24 grid grid-cols-1 lg:grid-cols-2 place-items-center px-4'>
         <div>
