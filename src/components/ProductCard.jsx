@@ -7,9 +7,9 @@ export const ProductCard = () => {
         <a href="#">
           <Image
             width={450}
-            height={500}
+            height={250}
             className="p-8 rounded-t-lg"
-            src="https://www.apple.com/v/iphone-15-pro/c/images/overview/contrast/iphone_15pro__3nx4u28gc026_large.jpg"
+            src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
             alt="product image"
           />
         </a>
