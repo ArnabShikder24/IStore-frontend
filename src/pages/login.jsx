@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 
-const Login = () => {
+const Login = () => 
+{
     return (
         <section className="bg-white">
             <div className="grid grid-cols-1 lg:grid-cols-2">
