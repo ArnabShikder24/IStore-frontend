@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const Login = () => 
+const SignUp = () => 
 {
     return (
         <section className="bg-white">
@@ -160,4 +160,4 @@ const Login = () =>
     );
 };
 
-export default Login;
+export default SignUp;
