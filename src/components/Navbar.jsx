@@ -36,8 +36,8 @@ export default function Navbar() {
               <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/about' && 'text-mainYellow'}`} href="/about">About</Link>
               <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/products' && 'text-mainYellow'}`} href="/products">Products</Link>
               <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/cart' && 'text-mainYellow'}`} href="/products">Cart</Link>
-              <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/login' && 'text-mainYellow'}`} href="/products">LogIn</Link>
-              <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/signup' && 'text-mainYellow'}`} href="/products">SignUp</Link>
+              <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/login' && 'text-mainYellow'}`} href="/login">LogIn</Link>
+              <Link className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${currentRouter === '/signup' && 'text-mainYellow'}`} href="/signup">SignUp</Link>
             </div>
             <div id="menu_btn" className={`block md:hidden focus:outline-none ${styles.hamburger} ${btnClicked && styles.open}`} onClick={() => setBtnClicked(btnClicked => !btnClicked)}>
               <span className={styles.hamburger_top}></span>
