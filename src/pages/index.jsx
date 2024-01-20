@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <section
         id="hero"
-        className="container mx-auto mb-24 grid grid-cols-1 lg:grid-cols-2 place-items-center px-4"
+        className="container mx-auto mb-24 grid grid-cols-1 lg:grid-cols-2 items-center justify-items-end px-20"
       >
         <div>
           <h1 className="font-semibold text-4xl md:text-6xl text-center lg:text-left">
