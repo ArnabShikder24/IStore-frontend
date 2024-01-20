@@ -2,7 +2,7 @@ import RootLayout from "@/components/RootLayout";
 import Image from "next/image";
 
 export default function Home() {
-  return (  
+  return (
     <>
       <section
         id="hero"
