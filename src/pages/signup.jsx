@@ -6,11 +6,11 @@ const SignUp = () =>
 {
     return (
         <section className="bg-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 h-[100vh]">
                 <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
                             <div className="absolute inset-0">
                             <Image
-                            src={"https://cdn.rareblocks.xyz/collection/celebration/images/signin/4/girl-thinking.jpg"}
+                            src={"https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80"}
                             width={450}
                             height={540}
                             alt="hero section"
@@ -63,7 +63,7 @@ const SignUp = () =>
                 <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
                     <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
                         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Sign Up to Celebration</h2>
-                        <p className="mt-2 text-base text-gray-600">Don’t have an account? <Link href="/signup" title="" className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline">Create a free account</Link></p>
+                        <p className="mt-2 text-base text-gray-600">Do have an account? <Link href="/login" title="" className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline">Login account</Link></p>
 
                         <form action="#" method="POST" className="mt-8">
                             <div className="space-y-5">
@@ -87,10 +87,8 @@ const SignUp = () =>
                                 </div>
 
                                 <div>
-                                    <div className="flex items-center justify-between">
+                                    <div>
                                         <label for="" className="text-base font-medium text-gray-900"> Password </label>
-
-                                        <a href="#" title="" className="text-sm font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"> Forgot password? </a>
                                     </div>
                                     <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
                                         <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
