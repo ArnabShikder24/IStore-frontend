@@ -10,13 +10,10 @@
   },
   "dependencies": {
     "antd": "^5.12.1",
-<<<<<<< HEAD
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
-=======
     "clsx": "^2.1.0",
     "firebase": "^10.7.1",
->>>>>>> 28a4bb732598189d5ea0a1f0f108c14eed2b0839
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
