@@ -75,7 +75,7 @@ export default function Navbar() {
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
                   currentRouter === "/login" && "text-mainYellow"
                 }`}
-                href="/login"
+                href="/contact"
               >
                 Contact
               </Link>
