@@ -6,11 +6,11 @@ const Login = () =>
 {
     return (
         <section className="bg-white">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-2 h-[100vh]">
                 <div className="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8">
                             <div className="absolute inset-0">
                             <Image
-                            src={"https://cdn.rareblocks.xyz/collection/celebration/images/signin/4/girl-thinking.jpg"}
+                            src={"https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80"}
                             width={450}
                             height={540}
                             alt="hero section"
