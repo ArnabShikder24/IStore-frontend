@@ -83,7 +83,7 @@ export default function Navbar() {
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
                   currentRouter === "/signup" && "text-mainYellow"
                 }`}
-                href="/signup"
+                href="/login"
               >
                 LogIn
               </Link>

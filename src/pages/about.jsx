@@ -122,7 +122,7 @@ const about = () => {
             </div>
             <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
               <Image
-                width={400}
+                width={500}
                 height={250}
                 src="https://images.unsplash.com/photo-1518126085714-4f983a88f6c5?q=80&w=2018&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
