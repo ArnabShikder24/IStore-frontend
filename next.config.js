@@ -7,6 +7,11 @@ const nextConfig = {
       "www.apple.com",
       "www.zdnet.com",
       "images.unsplash.com",
+      "www.dpreview.com",
+      "encrypted-tbn0.gstatic.com",
+      "freebiehive.com",
+      "cdn.myshoptet.com",
+      "i.postimg.cc",
     ],
   },
 };
