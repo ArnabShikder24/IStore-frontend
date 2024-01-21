@@ -11,6 +11,7 @@ const nextConfig = {
       "encrypted-tbn0.gstatic.com",
       "freebiehive.com",
       "cdn.myshoptet.com",
+      "i.postimg.cc",
     ],
   },
 };
