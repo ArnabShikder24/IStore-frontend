@@ -156,7 +156,7 @@ const SingleProducts = () => {
                         16 GB
                       </button>
                       <button className="px-4 py-2 mb-2 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">
-                        1 TB
+                        32 GB
                       </button>
                     </div>
                   </div>
@@ -171,7 +171,7 @@ const SingleProducts = () => {
                         256 GB
                       </button>
                       <button className="px-4 py-2 mb-2 mr-4 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">
-                        112 GB
+                        512 GB
                       </button>
                       <button className="px-4 py-2 mb-2 mr-2 font-semibold border rounded-md hover:border-blue-400 hover:text-blue-600 dark:border-gray-400 dark:hover:border-gray-300 dark:text-gray-400">
                         1 TB
