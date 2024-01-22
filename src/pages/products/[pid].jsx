@@ -15,10 +15,10 @@ const SingleProducts = () => {
               <div className="sticky top-0 z-50 overflow-hidden ">
                 <div className="relative mb-6 lg:mb-10 lg:h-2/4 ">
                   <Image
-                    width={450}
-                    height={250}
+                    width={500}
+                    height={500}
                     className="object-cover w-full lg:h-full "
-                    src="https://i.postimg.cc/6qcPhTQg/R-18.png"
+                    src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
                     alt="product image"
                   />
                 </div>
@@ -32,7 +32,7 @@ const SingleProducts = () => {
                         width={450}
                         height={250}
                         className="object-cover w-full lg:h-20"
-                        src="https://i.postimg.cc/6qcPhTQg/R-18.png"
+                        src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
                         alt="product image"
                       />
                     </a>
@@ -46,7 +46,7 @@ const SingleProducts = () => {
                         width={450}
                         height={250}
                         className="object-cover w-full lg:h-20"
-                        src="https://i.postimg.cc/6qcPhTQg/R-18.png"
+                        src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
                         alt="product image"
                       />
                     </a>
@@ -60,7 +60,7 @@ const SingleProducts = () => {
                         width={450}
                         height={250}
                         className="object-cover w-full lg:h-20"
-                        src="https://i.postimg.cc/6qcPhTQg/R-18.png"
+                        src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
                         alt="product image"
                       />
                     </a>
@@ -74,7 +74,7 @@ const SingleProducts = () => {
                         width={450}
                         height={250}
                         className="object-cover w-full lg:h-20"
-                        src="https://i.postimg.cc/6qcPhTQg/R-18.png"
+                        src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
                         alt="product image"
                       />
                     </a>
@@ -113,7 +113,7 @@ const SingleProducts = () => {
               <div className="lg:pl-20">
                 <div className="mb-8 ">
                   <h2 className="max-w-xl mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">
-                    Macbook Pro M130c90
+                    Iphone 15 Pro Max
                   </h2>
                   <p className="inline-block mb-6 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
                     <span>$1500.99</span>
