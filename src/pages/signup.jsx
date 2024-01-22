@@ -1,38 +1,49 @@
 import { auth } from "@/lib/firebase";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
   const [error, setError] = useState(null);
+  const router = useRouter();
+
   const handleCreateUser = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        pass
+      );
       const user = userCredential.user;
-      console.log('New User Created:', user);
-      router.push('/');
+      console.log("New User Created:", user);
+      router.push("/");
     } catch (error) {
       setError(error.message);
-      console.error('Error creating user:', error.message);
+      console.error("Error creating user:", error.message);
     }
-    setEmail('');
-    setPass('');
-  }
+    setEmail("");
+    setPass("");
+  };
   const handleSignUpWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
 
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log('Google User Signed In:', user);
-      router.push('/');
+      console.log("Google User Signed In:", user);
+      router.push("/");
     } catch (error) {
       setError(error.message);
-      console.error('Error signing in with Google:', error.message);
+      console.error("Error signing in with Google:", error.message);
     }
   };
   return (
@@ -163,7 +174,10 @@ const SignUp = () => {
             <form className="mt-8">
               <div className="space-y-5">
                 <div>
-                  <label htmlFor="" className="text-base font-medium text-gray-900">
+                  <label
+                    htmlFor=""
+                    className="text-base font-medium text-gray-900"
+                  >
                     {" "}
                     Email address{" "}
                   </label>
@@ -190,7 +204,7 @@ const SignUp = () => {
                       name=""
                       id=""
                       value={email}
-                      onChange={e => setEmail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter email to get started"
                       className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
@@ -239,7 +253,7 @@ const SignUp = () => {
                       name=""
                       id=""
                       value={pass}
-                      onChange={e => setPass(e.target.value)}
+                      onChange={(e) => setPass(e.target.value)}
                       placeholder="Enter your password"
                       className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />

@@ -37,7 +37,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await signOut(auth);
-    router.push('/login');
+    router.push("/login");
   };
 
   return (
@@ -96,27 +96,33 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              
-              {
-                loading ? <p>loading..</p> : 
-                  <>
-                    {user ? (
-                  <>
-                        <span>Welcome, {user.email}</span>
-                        <button className="bg-red-500 px-5 py-1 rounded-md text-white" onClick={handleLogout}>Logout</button>
-                  </>
-                ) : (
-                  <Link
-                    className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                      currentRouter === "/login" && "text-mainYellow"
-                    }`}
-                    href="/login"
-                  >
-                    LogIn
-                  </Link>
-                )}
-                  </>
-              }
+
+              {loading ? (
+                <p>loading..</p>
+              ) : (
+                <>
+                  {user ? (
+                    <>
+                      <span>Welcome, {user.email}</span>
+                      <button
+                        className="bg-red-500 px-5 py-1 rounded-md text-white"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <Link
+                      className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                        currentRouter === "/login" && "text-mainYellow"
+                      }`}
+                      href="/login"
+                    >
+                      LogIn
+                    </Link>
+                  )}
+                </>
+              )}
             </div>
             <div
               id="menu_btn"
@@ -182,26 +188,32 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                {
-                loading ? <p>loading..</p> : 
+                {loading ? (
+                  <p>loading..</p>
+                ) : (
                   <>
                     {user ? (
-                  <>
+                      <>
                         <span>Welcome, {user.email}</span>
-                        <button className="bg-red-500 px-5 py-1  rounded-md text-white" onClick={handleLogout}>Logout</button>
+                        <button
+                          className="bg-red-500 px-5 py-1  rounded-md text-white"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </button>
+                      </>
+                    ) : (
+                      <Link
+                        className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                          currentRouter === "/login" && "text-mainYellow"
+                        }`}
+                        href="/login"
+                      >
+                        LogIn
+                      </Link>
+                    )}
                   </>
-                ) : (
-                  <Link
-                    className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                      currentRouter === "/login" && "text-mainYellow"
-                    }`}
-                    href="/login"
-                  >
-                    LogIn
-                  </Link>
                 )}
-                  </>
-              }
               </div>
             )}
           </div>
