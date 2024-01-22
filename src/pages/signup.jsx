@@ -14,10 +14,13 @@ const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
       console.log('New User Created:', user);
+      router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error creating user:', error.message);
     }
+    setEmail('');
+    setPass('');
   }
   const handleSignUpWithGoogle = async () => {
     try {
@@ -26,6 +29,7 @@ const SignUp = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log('Google User Signed In:', user);
+      router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error signing in with Google:', error.message);

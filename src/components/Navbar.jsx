@@ -1,15 +1,27 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 import styles from "../styles/Navbar.module.css";
 
 export default function Navbar() {
   const [btnClicked, setBtnClicked] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
   const currentRouter = router.pathname;
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     const shadow = document.getElementById("main_div");
@@ -22,6 +34,11 @@ export default function Navbar() {
       }
     };
   }, []);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    router.push('/login');
+  };
 
   return (
     <div id="main_div" className="sticky top-0 z-10">
@@ -79,14 +96,27 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              <Link
-                className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                  currentRouter === "/login" && "text-mainYellow"
-                }`}
-                href="/login"
-              >
-                LogIn
-              </Link>
+              
+              {
+                loading ? <p>loading..</p> : 
+                  <>
+                    {user ? (
+                  <>
+                        <span>Welcome, {user.email}</span>
+                        <button className="bg-red-500 px-5 py-1 rounded-md text-white" onClick={handleLogout}>Logout</button>
+                  </>
+                ) : (
+                  <Link
+                    className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                      currentRouter === "/login" && "text-mainYellow"
+                    }`}
+                    href="/login"
+                  >
+                    LogIn
+                  </Link>
+                )}
+                  </>
+              }
             </div>
             <div
               id="menu_btn"
@@ -152,15 +182,26 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                <Link
-                  className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
-                    currentRouter === "/login" && "text-mainYellow"
-                  }`}
-                  href="/login"
-                  onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
-                >
-                  LogIn
-                </Link>
+                {
+                loading ? <p>loading..</p> : 
+                  <>
+                    {user ? (
+                  <>
+                        <span>Welcome, {user.email}</span>
+                        <button className="bg-red-500 px-5 py-1  rounded-md text-white" onClick={handleLogout}>Logout</button>
+                  </>
+                ) : (
+                  <Link
+                    className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                      currentRouter === "/login" && "text-mainYellow"
+                    }`}
+                    href="/login"
+                  >
+                    LogIn
+                  </Link>
+                )}
+                  </>
+              }
               </div>
             )}
           </div>

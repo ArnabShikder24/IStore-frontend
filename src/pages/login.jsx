@@ -2,22 +2,27 @@ import { auth } from "@/lib/firebase";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [error, setError] = useState(null);
+  const router = useRouter();
   const handleLoginUser = async (e) => {
     e.preventDefault(); 
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
       console.log('New User Created:', user);
+      router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error creating user:', error.message);
     }
+    setEmail('');
+    setPass('');
   }
   const handleSignInWithGoogle = async () => {
     try {
@@ -26,6 +31,7 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log('Google User Signed In:', user);
+      router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error signing in with Google:', error.message);
