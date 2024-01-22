@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 export const ProductCard = () => {
   return (
     <>
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
+        <Link href="/products/3">
           <Image
             width={450}
             height={250}
@@ -12,13 +13,13 @@ export const ProductCard = () => {
             src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
             alt="product image"
           />
-        </a>
+        </Link>
         <div class="px-5 pb-5">
-          <a href="#">
+          <Link href="/products/3">
             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
             </h5>
-          </a>
+          </Link>
           <div class="flex items-center mt-2.5 mb-5">
             <div class="flex items-center space-x-1 rtl:space-x-reverse">
               <svg
