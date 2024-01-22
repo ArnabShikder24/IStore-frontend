@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import RootLayout from "@/components/RootLayout";
 
-const about = () => {
+const About = () => {
   return (
     <div>
       <section className="py-10 lg:py-20 bg-stone-100 font-poppins dark:bg-gray-800">
@@ -126,7 +127,7 @@ const about = () => {
                 height={250}
                 src="https://images.unsplash.com/photo-1518126085714-4f983a88f6c5?q=80&w=2018&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
-                className="relative z-40 object-cover w-full h-full rounded"
+                className="object-cover w-full h-full rounded"
                 s
               />
             </div>
@@ -137,4 +138,8 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
+
+About.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};

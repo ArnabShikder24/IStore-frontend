@@ -10,7 +10,7 @@ const SignUp = () => {
           <div className="absolute inset-0">
             <Image
               src={
-                "https://cdn.rareblocks.xyz/collection/celebration/images/signin/4/girl-thinking.jpg"
+                "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80"
               }
               width={450}
               height={540}
@@ -118,13 +118,13 @@ const SignUp = () => {
               Sign Up to Celebration
             </h2>
             <p className="mt-2 text-base text-gray-600">
-              Don’t have an account?{" "}
+              Do have an account?{" "}
               <Link
-                href="/signup"
+                href="/login"
                 title=""
                 className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
               >
-                Create a free account
+                Login
               </Link>
             </p>
 
