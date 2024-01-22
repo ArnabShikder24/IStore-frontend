@@ -17,7 +17,7 @@ export const ProductCard = () => {
         <div class="px-5 pb-5">
           <Link href="/products/3">
             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
+              Iphone 15 Pro Max
             </h5>
           </Link>
           <div class="flex items-center mt-2.5 mb-5">
