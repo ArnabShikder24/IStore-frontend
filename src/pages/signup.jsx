@@ -1,8 +1,36 @@
+import { auth } from "@/lib/firebase";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const SignUp = () => {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [error, setError] = useState(null);
+  const handleCreateUser = async (e) => {
+    e.preventDefault(); 
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+      const user = userCredential.user;
+      console.log('New User Created:', user);
+    } catch (error) {
+      setError(error.message);
+      console.error('Error creating user:', error.message);
+    }
+  }
+  const handleSignUpWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log('Google User Signed In:', user);
+    } catch (error) {
+      setError(error.message);
+      console.error('Error signing in with Google:', error.message);
+    }
+  };
   return (
     <section className="bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -36,9 +64,9 @@ const SignUp = () => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </div>
@@ -56,9 +84,9 @@ const SignUp = () => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </div>
@@ -76,9 +104,9 @@ const SignUp = () => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </div>
@@ -96,9 +124,9 @@ const SignUp = () => {
                       fill="currentColor"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
                   </div>
@@ -128,10 +156,10 @@ const SignUp = () => {
               </Link>
             </p>
 
-            <form action="#" method="POST" className="mt-8">
+            <form className="mt-8">
               <div className="space-y-5">
                 <div>
-                  <label for="" className="text-base font-medium text-gray-900">
+                  <label htmlFor="" className="text-base font-medium text-gray-900">
                     {" "}
                     Email address{" "}
                   </label>
@@ -145,9 +173,9 @@ const SignUp = () => {
                         stroke="currentColor"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
                         />
                       </svg>
@@ -157,6 +185,8 @@ const SignUp = () => {
                       type="email"
                       name=""
                       id=""
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
                       placeholder="Enter email to get started"
                       className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
@@ -166,7 +196,7 @@ const SignUp = () => {
                 <div>
                   <div className="flex items-center justify-between">
                     <label
-                      for=""
+                      htmlFor=""
                       className="text-base font-medium text-gray-900"
                     >
                       {" "}
@@ -192,9 +222,9 @@ const SignUp = () => {
                         stroke="currentColor"
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
                         />
                       </svg>
@@ -204,6 +234,8 @@ const SignUp = () => {
                       type="password"
                       name=""
                       id=""
+                      value={pass}
+                      onChange={e => setPass(e.target.value)}
                       placeholder="Enter your password"
                       className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
@@ -212,7 +244,7 @@ const SignUp = () => {
 
                 <div>
                   <button
-                    type="submit"
+                    onClick={handleCreateUser}
                     className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-blue-600 focus:outline-none hover:opacity-80 focus:opacity-80"
                   >
                     Sign Up
@@ -224,6 +256,7 @@ const SignUp = () => {
             <div className="mt-3 space-y-3">
               <button
                 type="button"
+                onClick={handleSignUpWithGoogle}
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >
                 <div className="absolute inset-y-0 left-0 p-4">

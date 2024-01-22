@@ -67,13 +67,13 @@ export default function Navbar() {
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
                   currentRouter === "/cart" && "text-mainYellow"
                 }`}
-                href="/products"
+                href="/cart"
               >
                 Cart
               </Link>
               <Link
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                  currentRouter === "/login" && "text-mainYellow"
+                  currentRouter === "/contact" && "text-mainYellow"
                 }`}
                 href="/contact"
               >
@@ -81,7 +81,7 @@ export default function Navbar() {
               </Link>
               <Link
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                  currentRouter === "/signup" && "text-mainYellow"
+                  currentRouter === "/login" && "text-mainYellow"
                 }`}
                 href="/login"
               >
@@ -138,14 +138,14 @@ export default function Navbar() {
                   className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
                     currentRouter === "/cart" && "text-mainYellow"
                   }`}
-                  href="/products"
+                  href="/cart"
                   onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
                 >
                   Cart
                 </Link>
                 <Link
                   className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
-                    currentRouter === "/cart" && "text-mainYellow"
+                    currentRouter === "/contact" && "text-mainYellow"
                   }`}
                   href="/contact"
                   onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
@@ -154,7 +154,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
-                    currentRouter === "/cart" && "text-mainYellow"
+                    currentRouter === "/login" && "text-mainYellow"
                   }`}
                   href="/login"
                   onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
