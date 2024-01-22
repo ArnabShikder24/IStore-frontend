@@ -1,8 +1,36 @@
+import { auth } from "@/lib/firebase";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [error, setError] = useState(null);
+  const handleLoginUser = async (e) => {
+    e.preventDefault(); 
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+      const user = userCredential.user;
+      console.log('New User Created:', user);
+    } catch (error) {
+      setError(error.message);
+      console.error('Error creating user:', error.message);
+    }
+  }
+  const handleSignInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log('Google User Signed In:', user);
+    } catch (error) {
+      setError(error.message);
+      console.error('Error signing in with Google:', error.message);
+    }
+  };
   return (
     <section className="bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 h-[100vh]">
@@ -128,7 +156,7 @@ const Login = () => {
               </Link>
             </p>
 
-            <form action="#" method="POST" className="mt-8">
+            <form className="mt-8">
               <div className="space-y-5">
                 <div>
                   <label htmlFor="" className="text-base font-medium text-gray-900">
@@ -157,6 +185,8 @@ const Login = () => {
                       type="email"
                       name=""
                       id=""
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
                       placeholder="Enter email to get started"
                       className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
@@ -204,6 +234,8 @@ const Login = () => {
                       type="password"
                       name=""
                       id=""
+                      value={pass}
+                      onChange={e => setPass(e.target.value)}
                       placeholder="Enter your password"
                       className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
                     />
@@ -212,7 +244,7 @@ const Login = () => {
 
                 <div>
                   <button
-                    type="submit"
+                    onClick={handleLoginUser}
                     className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 border border-transparent rounded-md bg-gradient-to-r from-fuchsia-600 to-blue-600 focus:outline-none hover:opacity-80 focus:opacity-80"
                   >
                     Log in
@@ -224,6 +256,7 @@ const Login = () => {
             <div className="mt-3 space-y-3">
               <button
                 type="button"
+                onClick={handleSignInWithGoogle}
                 className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
               >
                 <div className="absolute inset-y-0 left-0 p-4">
