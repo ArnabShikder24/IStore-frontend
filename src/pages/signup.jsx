@@ -1,9 +1,14 @@
 import { auth } from "@/lib/firebase";
+<<<<<<< HEAD
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+=======
+import axios from "axios";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+>>>>>>> 60a541ce11fd59e2792007e35b8b1eac3b3cbd63
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,7 +19,10 @@ const SignUp = () => {
   const [pass, setPass] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 60a541ce11fd59e2792007e35b8b1eac3b3cbd63
   const handleCreateUser = async (e) => {
     e.preventDefault();
     try {
@@ -24,8 +32,22 @@ const SignUp = () => {
         pass
       );
       const user = userCredential.user;
+<<<<<<< HEAD
       console.log("New User Created:", user);
       router.push("/");
+=======
+      console.log('New User Created:', user);
+      const userData = {
+        first_name: 'John',
+        last_name: 'Doe', 
+        phone: '1234567890',
+        address: '123 Main St',
+        email: email
+      };
+      const response = await axios.post('http://localhost:5000/api/v1/user', userData);
+      console.log('New User Created:', user, response);
+      router.push('/');
+>>>>>>> 60a541ce11fd59e2792007e35b8b1eac3b3cbd63
     } catch (error) {
       setError(error.message);
       console.error("Error creating user:", error.message);
