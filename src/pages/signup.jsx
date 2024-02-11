@@ -1,19 +1,31 @@
 import { auth } from "@/lib/firebase";
+import axios from "axios";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [error, setError] = useState(null);
+  const router = useRouter();
   const handleCreateUser = async (e) => {
     e.preventDefault(); 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
       console.log('New User Created:', user);
+      const userData = {
+        first_name: 'John',
+        last_name: 'Doe', 
+        phone: '1234567890',
+        address: '123 Main St',
+        email: email
+      };
+      const response = await axios.post('http://localhost:5000/api/v1/user', userData);
+      console.log('New User Created:', user, response);
       router.push('/');
     } catch (error) {
       setError(error.message);
