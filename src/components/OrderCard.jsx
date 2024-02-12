@@ -77,7 +77,7 @@ export default function OrderCard({ order, setUpdateSuccess }) {
               width={450}
               height={250}
               className="p-8 rounded-t-lg"
-              src="https://images.unsplash.com/photo-1700125621736-75a6d245a308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aXBob25lJTIwMTUlMjBwcm8lMjBtYXh8ZW58MHx8MHx8fDA%3D"
+              src={img}
               alt="product image"
             />
             <div class="px-5 pb-5">
