@@ -72,22 +72,31 @@ export default function Navbar() {
               >
                 About
               </Link>
-              <Link
-                className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                  currentRouter === "/products" && "text-mainYellow"
-                }`}
-                href="/products"
-              >
-                Products
-              </Link>
-              <Link
-                className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
-                  currentRouter === "/cart" && "text-mainYellow"
-                }`}
-                href="/cart"
-              >
-                Cart
-              </Link>
+              {
+                loading ? <p>loading..</p> : 
+                  <>
+                    {user && 
+                      <>
+                      <Link
+                        className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                          currentRouter === "/products" && "text-mainYellow"
+                        }`}
+                        href="/products"
+                      >
+                        Products
+                      </Link>
+                      <Link
+                      className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                        currentRouter === "/cart" && "text-mainYellow"
+                      }`}
+                      href="/cart"
+                    >
+                      Cart
+                    </Link>
+                    </>
+                    }
+                  </>
+              }
               <Link
                 className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
                   currentRouter === "/contact" && "text-mainYellow"
@@ -155,24 +164,32 @@ export default function Navbar() {
                 >
                   About
                 </Link>
-                <Link
-                  className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
-                    currentRouter === "/products" && "text-mainYellow"
-                  }`}
-                  href="/products"
-                  onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
-                >
-                  Products
-                </Link>
-                <Link
-                  className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
-                    currentRouter === "/cart" && "text-mainYellow"
-                  }`}
-                  href="/cart"
-                  onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
-                >
-                  Cart
-                </Link>
+                {
+                  loading ? <p>loading..</p> : 
+                    <>
+                      {user && 
+                        <>
+                        <Link
+                          className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
+                            currentRouter === "/products" && "text-mainYellow"
+                          }`}
+                          href="/products"
+                          onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
+                        >
+                          Products
+                        </Link>
+                        <Link
+                        className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                          currentRouter === "/cart" && "text-mainYellow"
+                        }`}
+                        href="/cart"
+                      >
+                        Cart
+                      </Link>  
+                      </>
+                      }
+                    </>
+                }
                 <Link
                   className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
                     currentRouter === "/contact" && "text-mainYellow"
