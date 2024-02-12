@@ -1,9 +1,47 @@
 import DashLayout from "@/components/DashLayout";
+import axios from "axios";
+import { useState } from "react";
 
 export default function AddProduct() {
+    const [formData, setFormData] = useState({
+        title: "",
+        price: "",
+        quantity: "",
+        img: "",
+        category: "",
+        color: "",
+        description: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:5000/api/v1/product", formData);
+            console.log("Product added successfully:", response.data.message);
+            setFormData({
+                title: "",
+                price: "",
+                quantity: "",
+                img: "",
+                category: "",
+                color: "",
+                description: ""
+            });
+        } catch (error) {
+            console.error("Error adding product:", error.message);
+        }
+    };
     return (
         <div>
-            <form className="max-w-sm mx-auto">
+            <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
                 <h1 className="mb-16 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-white">
                 Add Your{" "}
                 <span className="text-blue-600 dark:text-blue-500">Products</span>
@@ -18,6 +56,9 @@ export default function AddProduct() {
                 <input
                     type="text"
                     id="product_title"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
@@ -31,6 +72,9 @@ export default function AddProduct() {
                 <input
                     type="number"
                     id="product_price"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
@@ -44,6 +88,9 @@ export default function AddProduct() {
                 <input
                     type="number"
                     id="product_quantity"
+                    name="quantity"
+                    value={formData.quantity}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
@@ -57,6 +104,9 @@ export default function AddProduct() {
                 <input
                     type="text"
                     id="product_image"
+                    name="img"
+                    value={formData.img}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
@@ -70,6 +120,9 @@ export default function AddProduct() {
                 <input
                     type="text"
                     id="product_category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
@@ -83,6 +136,9 @@ export default function AddProduct() {
                 <input
                     type="text"
                     id="product_color"
+                    name="color"
+                    value={formData.color}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
@@ -96,6 +152,9 @@ export default function AddProduct() {
                 <input
                     type="text"
                     id="product_description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
                 </div>
