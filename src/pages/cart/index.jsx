@@ -9,6 +9,7 @@ export default function Cart() {
     const [orders, setOrders] = useState([]);
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
+    const [updateSuccess, setUpdateSuccess] = useState('');
     const [loading, setLoading] = useState(true);
 
     console.log(orders);
@@ -38,7 +39,7 @@ export default function Cart() {
             }
         };
         fetchData(user);
-    }, [user]); 
+    }, [user, updateSuccess]); 
     if (loading) {
         return <p>Loading...</p>
     }
@@ -47,7 +48,7 @@ export default function Cart() {
             {error && <p>Error: {error}</p>}
         <div className="flex items-center justify-center">
             <div className="grid grid-cols-3 gap-20">
-                {orders.map((order, idx) => <OrderCard order={order} key={idx} />)}
+                {orders.map((order, idx) => <OrderCard order={order} setUpdateSuccess={setUpdateSuccess} key={idx} />)}
             </div>
         </div>
         </div>
