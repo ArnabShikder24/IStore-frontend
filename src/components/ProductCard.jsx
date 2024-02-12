@@ -32,7 +32,8 @@ export const ProductCard = ({ product, email }) => {
   
       try {
         const orderResponse = await axios.post('http://localhost:5000/api/v1/order', orderData);
-        console.log('Order created:', orderResponse.data);
+        console.log(orderResponse);
+        console.log(orderResponse.data);
       } catch (error) {
         console.error('Error creating order:', error);
       } 
@@ -41,7 +42,7 @@ export const ProductCard = ({ product, email }) => {
   return (
     <>
       <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
-        <Link href="/products/3">
+        <Link href={`/products/${product_id}`}>
           <Image
             width={450}
             height={250}
@@ -51,7 +52,7 @@ export const ProductCard = ({ product, email }) => {
           />
         </Link>
         <div class="px-5 pb-5">
-          <Link href="/products/3">
+          <Link href={`/products/${product_id}`}>
             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
               {title}, {color}
             </h5>
