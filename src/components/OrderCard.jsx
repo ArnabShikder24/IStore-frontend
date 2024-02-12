@@ -31,24 +31,43 @@ export default function OrderCard({ order, setUpdateSuccess }) {
     return <p>.</p>;
   }
     const { title, img, description, color, category, price } = product;
-    const handleSubmitQuantity = async () => {
-        const newSubtotal = parseFloat(price) * parseInt(newQuantity);
-        const formdata = {
-            quantity: parseInt(newQuantity),
-            order_id: order_id,
-            email: email,
-            subtotal: newSubtotal
-        }
-        try {
-            const response = await axios.post('http://localhost:5000/api/v1/order/update', formdata);
-            console.log('Order updated successfully:', response.data.message);
-            setUpdateSuccess(response.data.message)
-          } catch (error) {
-            console.error('Error updating order:', error.message);
-            setError(error.message)
-            setUpdateSuccess('')
-          }
+  const handleSubmitQuantity = async () => {
+    if (newQuantity == 0) {
+      return;
     }
+    const newSubtotal = parseFloat(price) * parseInt(newQuantity);
+    const formdata = {
+      quantity: parseInt(newQuantity),
+      order_id: order_id,
+      email: email,
+      subtotal: newSubtotal
+    }
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/order/update', formdata);
+      console.log('Order updated successfully:', response.data.message);
+      setUpdateSuccess(response.data.message)
+    } catch (error) {
+      console.error('Error updating order:', error.message);
+      setError(error.message)
+      setUpdateSuccess('')
+    }
+  };
+
+  const handleDeleteOrder = async () => {
+    const orderToDelete = {
+      order_id: order_id,
+      email: email
+    };
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/order/delete', orderToDelete);
+      console.log('Order deleted successfully:', response.data.message);
+      setUpdateSuccess(response.data.message)
+    } catch (error) {
+      console.error('Error deleting order:', error.message);
+      setUpdateSuccess('')
+    }
+  };
   return (
     <>
       {product && (
@@ -120,7 +139,7 @@ export default function OrderCard({ order, setUpdateSuccess }) {
                     >
                       Update
                     </button>
-                    <button className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-5">
+                    <button onClick={handleDeleteOrder} className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-5">
                       Remove from Cart
                     </button>
                   </div>

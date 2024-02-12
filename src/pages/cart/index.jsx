@@ -12,7 +12,7 @@ export default function Cart() {
     const [updateSuccess, setUpdateSuccess] = useState('');
     const [loading, setLoading] = useState(true);
     const [mainTotal, setMainTotal] = useState(0);
-
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
     useEffect(() => {
         setLoading(true)
         const calculateMainTotal = () => {
@@ -51,7 +51,7 @@ export default function Cart() {
             }
         };
         fetchData(user);
-    }, [user, updateSuccess]); 
+    }, [user, updateSuccess, randomNumber]); 
     if (loading) {
         return <p>Loading...</p>
     }
@@ -67,9 +67,9 @@ export default function Cart() {
                 <h1 className="text-xl font-bold">Your Total Amount</h1>
                 <p className="text-xl font-bold py-4">${mainTotal}</p>
                 <button
-                      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
-                      Confirm Order
+                        Confirm Order
                     </button>
             </div>
         </div>
