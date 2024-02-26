@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import { toast } from "react-toastify";
 export const ProductCard = ({ product, email }) => {
   const { title, quantity, product_id, price, img, description, color, category } = product;
 
@@ -32,10 +33,15 @@ export const ProductCard = ({ product, email }) => {
   
       try {
         const orderResponse = await axios.post('http://localhost:5000/api/v1/order', orderData);
-        console.log(orderResponse);
+        if (orderResponse?.data.message === "Product already exist you can't add it again") {
+          toast.error(orderResponse?.data.message);
+        } else {
+          toast.success("successfully added to card");
+        }
         console.log(orderResponse.data);
       } catch (error) {
         console.error('Error creating order:', error);
+        toast.error(error.message);
       } 
     }
   }
@@ -127,6 +133,7 @@ export const ProductCard = ({ product, email }) => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };

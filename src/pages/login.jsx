@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,10 +17,12 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, pass);
       const user = userCredential.user;
       console.log('New User Created:', user);
+      toast.success("Successfully logged In");
       router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error creating user:', error.message);
+      toast.error("something wents wrong, try again");
     }
     setEmail('');
     setPass('');
@@ -31,10 +34,12 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log('Google User Signed In:', user);
+      toast.success("Successfully logged In");
       router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error signing in with Google:', error.message);
+      toast.error("Error signing in with Google");
     }
   };
   return (

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -26,10 +27,12 @@ const SignUp = () => {
       };
       const response = await axios.post('http://localhost:5000/api/v1/user', userData);
       console.log('New User Created:', user, response);
+      toast.success("Successfully Create User");
       router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error creating user:', error.message);
+      toast.error("something wents wrong, try again");
     }
     setEmail('');
     setPass('');
@@ -51,11 +54,13 @@ const SignUp = () => {
         };
         const response = await axios.post('http://localhost:5000/api/v1/user', userData);
         console.log('New User Created:', user, response);
+        toast.success("New User Created");
       }
       router.push('/');
     } catch (error) {
       setError(error.message);
       console.error('Error signing in with Google:', error.message);
+      toast.error("something wents wrong, try again");
     }
   };
   return (
