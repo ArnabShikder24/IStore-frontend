@@ -41,6 +41,17 @@ const SignUp = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log('Google User Signed In:', user);
+      if (user?.email) {
+        const userData = {
+          first_name: 'John',
+          last_name: 'Doe', 
+          phone: '1234567890',
+          address: '123 Main St',
+          email: user?.email
+        };
+        const response = await axios.post('http://localhost:5000/api/v1/user', userData);
+        console.log('New User Created:', user, response);
+      }
       router.push('/');
     } catch (error) {
       setError(error.message);
