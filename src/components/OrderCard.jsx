@@ -2,6 +2,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function OrderCard({ order, setUpdateSuccess }) {
     const [product, setProduct] = useState(null);
@@ -30,9 +31,14 @@ export default function OrderCard({ order, setUpdateSuccess }) {
   if (loading) {
     return <p>.</p>;
   }
-    const { title, img, description, color, category, price } = product;
+  const { title, img, description, color, category, price, quantity: oldQuantity } = product;
   const handleSubmitQuantity = async () => {
-    if (newQuantity == 0) {
+    if (newQuantity < 1) {
+      toast.error("Quantity must be greater than 0");
+      return;
+    }
+    if (oldQuantity < newQuantity) {
+      toast.error("Quantity must be less than Available quantity");
       return;
     }
     const newSubtotal = parseFloat(price) * parseInt(newQuantity);
@@ -45,7 +51,8 @@ export default function OrderCard({ order, setUpdateSuccess }) {
     try {
       const response = await axios.post('http://localhost:5000/api/v1/order/update', formdata);
       console.log('Order updated successfully:', response.data.message);
-      setUpdateSuccess(response.data.message)
+      setUpdateSuccess(response.data.message);
+      toast.success("Order Updated");
     } catch (error) {
       console.error('Error updating order:', error.message);
       setError(error.message)
@@ -62,7 +69,8 @@ export default function OrderCard({ order, setUpdateSuccess }) {
     try {
       const response = await axios.post('http://localhost:5000/api/v1/order/delete', orderToDelete);
       console.log('Order deleted successfully:', response.data.message);
-      setUpdateSuccess(response.data.message)
+      setUpdateSuccess(response.data.message);
+      toast.success("Product Removed");
     } catch (error) {
       console.error('Error deleting order:', error.message);
       setUpdateSuccess('')
@@ -102,12 +110,22 @@ export default function OrderCard({ order, setUpdateSuccess }) {
               {show && (
                 <div className="my-3">
                   <p className="text-sm mb-1">Update Your Quantity : </p>
-                  <input
-                    className="w-24 h-10 rounded-lg"
-                    type="number"
-                    onChange={e => setNewQuantity(e.target.value)}
-                    defaultValue={quantity}
-                  />
+                  <div className="flex gap-2 items-center">
+                    <button
+                      className="w-8 h-8 bg-red-500 text-white rounded-lg flex items-center justify-center"
+                      onClick={() => setNewQuantity(prevQuantity => prevQuantity > 0 && prevQuantity - 1)}
+                    >-</button>
+                    <input
+                      className="w-24 h-10 rounded-lg"
+                      type="number"
+                      onChange={e => setNewQuantity(parseInt(e.target.value, 10))}
+                      value={newQuantity}
+                    />
+                    <button
+                      className="w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center"
+                      onClick={() => setNewQuantity(prevQuantity => prevQuantity + 1)}
+                    >+</button>
+                  </div>
                 </div>
               )}
 
@@ -121,7 +139,7 @@ export default function OrderCard({ order, setUpdateSuccess }) {
                       }}
                       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
-                      Submit
+                      confirm
                     </button>
                     <button
                       onClick={() => setShow(false)}
@@ -139,7 +157,7 @@ export default function OrderCard({ order, setUpdateSuccess }) {
                     >
                       Update
                     </button>
-                    <button onClick={handleDeleteOrder} className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-5">
+                    <button onClick={handleDeleteOrder}className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-5">
                       Remove from Cart
                     </button>
                   </div>
