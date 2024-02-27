@@ -2,45 +2,49 @@ import DashLayout from "@/components/DashLayout";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import UpdateProduct from "@/components/UpdateProduct";
+const { Modal } = require("antd");
 
 export default function AllProduct() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
+  const [modalShow, setModalShow] = useState(false);
+  const [pId, setPId] = useState(null);
 
   useEffect(() => {
-   const fetchData = async () => {
-     try {
-       const response = await axios.get("http://localhost:5000/api/v1/products", {
-         headers: {
-           Accept: "application/json",
-         },
-       });
-      setProducts(response.data.data);
-      setLoading(false);
-     } catch (error) {
-       setError(error.message);
-      console.error("Error fetching products:", error.message);
-      setLoading(false);
-     }
-   };
- 
-   fetchData();
-  }, [message]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/v1/products", {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+        setProducts(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        console.error("Error fetching products:", error.message);
+        setLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, [message, modalShow]);
 
- const handleDelete = async (productId) => {
-  const randomNumber = Math.floor(Math.random() * 100) + 1;
-   try {
-       const response = await axios.get(`http://localhost:5000/api/v1/product/delete?product_id=${productId}`);
-       setMessage(`${response.data.message}, ${randomNumber}`);
-   } catch (error) {
-       setMessage(`${error.response.data.message}, ${randomNumber}`);
-   }
-};
- 
- if (loading) {
-   return <p>loading...</p>
+  const handleDelete = async (productId) => {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    try {
+        const response = await axios.get(`http://localhost:5000/api/v1/product/delete?product_id=${productId}`);
+        setMessage(`${response.data.message}, ${randomNumber}`);
+    } catch (error) {
+        setMessage(`${error.response.data.message}, ${randomNumber}`);
+    }
+  };
+
+  if (loading) {
+    return <p>loading...</p>
   }
 
   return (
@@ -63,6 +67,7 @@ export default function AllProduct() {
                       <th className="px-6 pb-3 text-lg text-purple-600">Category</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Color</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Price</th>
+                      <th className="px-6 pb-3 text-lg text-purple-600">Quantity</th>
                       <th className="px-6 pb-3 text-lg text-purple-600">Operations</th>
                     </tr>
                   </thead>
@@ -74,10 +79,15 @@ export default function AllProduct() {
                         <td className="px-6 py-5 font-medium">{product.category}</td>
                         <td className="px-6 py-5 font-medium">{product.color}</td>
                         <td className="px-6 py-5 font-medium">{product.price}</td>
+                        <td className="px-6 py-5 font-medium">{product.quantity}</td>
                         <td className="flex items-center px-6 py-5 ">
                           <button
                             type="button"
                             className="text-blue-700 bg-white hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800"
+                            onClick={() => {
+                              setModalShow(true)
+                              setPId(product?.product_id)
+                            }}
                           >
                             Update
                           </button>
@@ -98,6 +108,17 @@ export default function AllProduct() {
           </div>
         </section>
       </div>
+
+      {
+        pId &&
+        <Modal footer={false} open={modalShow} onCancel={() => {
+            setModalShow(false)
+            setPId(null)
+        }}>
+          <UpdateProduct product_id={pId} setModalShow={setModalShow} setPId={setPId} />
+        </Modal>
+      }
+
     </div>
   );
 }

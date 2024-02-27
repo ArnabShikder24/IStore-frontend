@@ -88,19 +88,19 @@ export default function OrderCard({ order, setUpdateSuccess }) {
               src={img}
               alt="product image"
             />
-            <div class="px-5 pb-5">
-              <h5 class="text-sm font-semibold tracking-tight text-gray-900 dark:text-white">
+            <div className="px-5 pb-5">
+              <h5 className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white">
                 Order_id: {order_id}
               </h5>
-              <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                 {title}
               </h5>
               <div>
-                <span class="text-base font-bold text-gray-900 dark:text-white">
+                <span className="text-base font-bold text-gray-900 dark:text-white">
                   Quantity: {quantity}
                 </span>
                 <br />
-                <span class="text-xl font-bold text-gray-900 dark:text-white">
+                <span className="text-xl font-bold text-gray-900 dark:text-white">
                   SubTotal: ${subtotal}
                 </span>
               </div>

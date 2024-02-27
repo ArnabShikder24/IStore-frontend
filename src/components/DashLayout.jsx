@@ -53,7 +53,7 @@ export default function DashLayout({ children }) {
             </Link>
         <Link href="/dashboard/AddProduct">
             <div style={{ cursor: 'pointer' }} className='text-white flex gap-5 px-5 py-3 hover:bg-green-400'>
-            <ShopOutlined />
+            <CloudOutlined />
             <span>Add Product</span>
             </div>
         </Link>
