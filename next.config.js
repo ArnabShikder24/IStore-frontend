@@ -12,6 +12,7 @@ const nextConfig = {
       "freebiehive.com",
       "cdn.myshoptet.com",
       "i.postimg.cc",
+      "unsplash.com",
     ],
   },
 };
