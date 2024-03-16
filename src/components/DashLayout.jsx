@@ -10,6 +10,7 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 const { Layout, Menu, theme } = antd;
 const { Header, Content, Footer, Sider } = Layout;
@@ -28,6 +29,9 @@ const items = [
   label: `nav ${index + 1}`,
 }));
 export default function DashLayout({ children }) {
+  const router = useRouter();
+  const { pathname } = router;
+  console.log(pathname);
     const {
         token: { colorBgContainer, borderRadiusLG },
       } = theme.useToken();
@@ -46,31 +50,35 @@ export default function DashLayout({ children }) {
         <div className="demo-logo-vertical" />
               {/* <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} /> */}
               <Link href="/dashboard">
-        <div style={{ cursor: 'pointer' }} className='text-white flex gap-5 px-5 py-3 hover:bg-green-400'>
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard" && "bg-green-400"}`}>
           <ShopOutlined />
           <span>Dashboard</span>
             </div>
             </Link>
         <Link href="/dashboard/AddProduct">
-            <div style={{ cursor: 'pointer' }} className='text-white flex gap-5 px-5 py-3 hover:bg-green-400'>
+            <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AddProduct" && "bg-green-400"}`}>
             <CloudOutlined />
             <span>Add Product</span>
             </div>
         </Link>
         <Link href="/dashboard/AllProduct">
-        <div style={{ cursor: 'pointer' }} className='text-white flex gap-5 px-5 py-3 hover:bg-green-400'>
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllProduct" && "bg-green-400"}`}>
           <ShopOutlined />
           <span>All Product</span>
         </div>
         </Link>
-        <div style={{ cursor: 'pointer' }} className='text-white flex gap-5 px-5 py-3 hover:bg-green-400'>
+        <Link href="/dashboard/AllUser">
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllUser" && "bg-green-400"}`}>
           <ShopOutlined />
           <span>All User</span>
-        </div>
-        <div style={{ cursor: 'pointer' }} className='text-white flex gap-5 px-5 py-3 hover:bg-green-400'>
+          </div>
+        </Link>
+        <Link href="/dashboard/AllOrder">
+        <div style={{ cursor: 'pointer' }} className={`text-white flex gap-5 px-5 py-3 hover:bg-green-400 ${pathname === "/dashboard/AllOrder" && "bg-green-400"}`}>
           <ShopOutlined />
           <span>All Order</span>
-        </div>
+          </div>
+        </Link>
       </Sider>
       <Layout
         style={{
