@@ -105,7 +105,14 @@ export default function Navbar() {
               >
                 Contact
               </Link>
-              
+              <Link
+                className={`text-[#00000080] hover:text-mainYellow font-semibold text-sm ${
+                  currentRouter === "/developer" && "text-mainYellow"
+                }`}
+                href="/developer"
+              >
+                Developer
+              </Link>
               {
                 loading ? <p>loading..</p> : 
                   <>
@@ -198,6 +205,15 @@ export default function Navbar() {
                   onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
                 >
                   Contact
+                </Link>
+                <Link
+                  className={`text-[#00000080] hover:text-mainYellow font-semibold text-base ${
+                    currentRouter === "/developer" && "text-mainYellow"
+                  }`}
+                  href="/developer"
+                  onClick={() => setBtnClicked((btnClicked) => !btnClicked)}
+                >
+                  Developer
                 </Link>
                 {
                 loading ? <p>loading..</p> : 
