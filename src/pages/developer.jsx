@@ -47,13 +47,15 @@ const DeveloperPage = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-6 container mx-auto">
-      <h1 className="text-4xl font-bold mb-20">Meet Our Developers</h1>
+    <div className='bg-gray-100'>
+      <div className="flex flex-col items-center justify-center min-h-screen py-6 container mx-auto">
+      <h1 className="text-4xl font-bold mb-10">Meet Our Developers</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {developers.map((developer, index) => (
           <DeveloperCard key={index} {...developer} />
         ))}
       </div>
+    </div>
     </div>
   );
 };
