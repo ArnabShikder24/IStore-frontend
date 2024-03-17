@@ -20,9 +20,9 @@ export default function Home() {
             className="lg:hidden mx-auto my-8"
           />
           <p className="paragraph text-center lg:text-left my-8">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-            odio accusantium nulla! Magnam laudantium et, adipisci nostrum modi
-            quae vero?
+          Apple Inc., with its headquarters in Cupertino, California, was established on April 1, 1976. They plan, build and market applications and internet services for electronic devices. It is known as one of the world's Top Four technology enterprises. Adds a new chapter of Apple Mobile. Through their creative goods and services, they still impress and amaze the world.
+
+          It was limited only to California when the Apple Company began its journey, but today it is the most profitable company in history.
           </p>
 
           <button className="py-3 px-6 bg-[#8338ec] text-white rounded font-bold capitalize block mx-auto lg:m-0">
@@ -457,11 +457,11 @@ export default function Home() {
 
       <section className="py-10 bg-white sm:py-16 lg:py-24">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div class="max-w-2xl mx-auto text-center mb-20">
-            <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+          <div className="max-w-2xl mx-auto text-center mb-20">
+            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
               What our customers say
             </h2>
-            <p class="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-600">
+            <p className="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-600">
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis.
             </p>
