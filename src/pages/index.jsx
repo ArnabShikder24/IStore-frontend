@@ -10,7 +10,7 @@ export default function Home() {
       >
         <div>
           <h1 className="font-semibold text-4xl md:text-6xl text-center lg:text-left">
-            Your Trusted Destination for Apple Products
+            Your Trusted Destination for <span className="text-[#8338ec]">Apple</span> Products
           </h1>
           <Image
             src={"/png/iphoneBanner.png"}
