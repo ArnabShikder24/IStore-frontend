@@ -52,7 +52,7 @@ export const ProductCard = ({ product, email }) => {
           <Image
             width={450}
             height={250}
-            className="p-8 rounded-t-lg"
+            className="p-8 rounded-t-lg h-[400px]"
             src={img}
             alt="product image"
           />
